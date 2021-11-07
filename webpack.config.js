@@ -19,11 +19,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
       template: './src/index.html',
       title: 'index',
       filename: 'index.html'
-  }),
-  new CleanWebpackPlugin()
+  })
 ],
 };
