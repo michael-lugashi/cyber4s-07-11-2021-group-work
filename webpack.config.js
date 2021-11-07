@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.[contenthash].js',
+    clean: true,
   },
   module: {
     rules: [
@@ -21,7 +22,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/template.html',
       title: 'index',
       filename: 'index.html'
   })
