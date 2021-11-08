@@ -63,12 +63,12 @@ app.delete('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id);
   phonebook = phonebook.filter((note) => note.id !== id);
 
-  res.status(204).end();
+  res.status(202).json(phonebook);
 });
 
 app.post('/api/persons', morgan(':body'), (req, res) => {
   if (!req.body.name) {
-    res.status(404).json({ error: 'missing name' });
+    res.status(400).json({ error: 'missing name' });
     return;
   }
   for (const person of phonebook) {
@@ -85,7 +85,7 @@ app.post('/api/persons', morgan(':body'), (req, res) => {
   req.body.id = generateId()
   phonebook.push(req.body);
 //   console.log(phonebook);
-  res.status(201).end();
+  res.status(201).json(phonebook);
 });
 
 function generateId() {

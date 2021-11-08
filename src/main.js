@@ -20,6 +20,7 @@ function formAction(event) {
   }
   if (userAction.value === 'addContact') {
     console.log('add');
+    addContact()
   }
 }
 
@@ -56,10 +57,26 @@ function displayData(data) {
 function createTableElement(text) {
   const tableElement = document.createElement('td');
   tableElement.textContent = text;
+  tableElement.classList.add('tableElem')
   return tableElement;
 }
 function deleteContact(){
-    axios.delete(`${baseUrl}api/persons`).then((response) => {
+    axios.delete(`${baseUrl}api/persons/${inputNameOrId.value}`).then((response) => {
         displayData(response.data);
+        deleteNotify()
+      });
+
+}
+function deleteNotify(){
+    inputNameOrId.value = ''
+    inputPhoneNumber.value = ''
+}
+function addContact(){
+    axios.post(`${baseUrl}api/persons`, {
+        name: inputNameOrId.value,
+        number: inputPhoneNumber.value
+    }).then((response) => {
+        displayData(response.data);
+        deleteNotify()
       });
 }

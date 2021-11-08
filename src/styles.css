@@ -3,16 +3,19 @@
 body {
   background-color: seashell;
   font-family: 'Merriweather Sans', sans-serif;
+  margin: 0;
 }
 #title {
   text-align: center;
   color: goldenrod;
   font-size: 5vw;
-  text-decoration: underline rgb(124, 124, 124);
+  text-decoration: underline rgba(124, 124, 124, 0.75);
+  margin-bottom: 0;
+  margin-top: 4vw
 }
 #userActionForm {
   margin: auto;
-  margin-top: 50px;
+  margin-top: 4vw;
   display: flex;
   justify-content: center;
   width: 80vw;
@@ -43,22 +46,11 @@ body {
   outline: none;
 }
 .options {
-  background-color: rgb(124, 124, 124);
-}
-/* remove num scroll */
-/* Chrome, Safari, Edge, Opera */
-.userInput::-webkit-outer-spin-button,
-.userInput::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+  background-color: rgb(160,156,156);
 }
 
 #inputNameOrId {
-    width: 50vw;
+  width: 50vw;
 }
 /* #inputPhoneNumber {
     border-left: solid;
@@ -126,9 +118,62 @@ input[type=number] {
   background-color: rgb(124, 124, 124);
 }
 
-#phonebook {
+/* table styling */
+/* #tableBorder {
+  border: solid goldenrod;
+  border-radius: 1.5vw;
+  height:min-content;
   margin: auto;
   margin-top: 50px;
-  border: solid;
   width: 80vw;
+} */
+#phonebook {
+  margin: auto;
+  margin-top: 5vw;
+  border-collapse: collapse;
+  width: 80vw;
+}
+#phonebook > thead {
+  background-color: goldenrod;
+  font-size: 2vw;
+  color: seashell;
+  margin: 0;
+  text-align: left;
+}
+#phonebook > tbody {
+  font-size: 1.5vw;
+}
+#phonebook > thead > tr > th{
+    height: 4vw;
+ padding-left: 2vw;
+}
+#phonebook > thead > tr > th:first-child {
+  border-top-left-radius: 1.5vw;
+}
+#phonebook > thead > tr > th:last-child {
+  border-top-right-radius: 1.5vw;
+}
+#phonebook > tbody > tr:last-child > td:first-child {
+  border-bottom-left-radius: 1.5vw;
+}
+#phonebook > tbody > tr:last-child > td:last-child {
+  border-bottom-right-radius: 1.5vw;
+}
+#phonebook > tbody > tr:nth-child(even) {
+  /* background-color: rgba(218, 165, 32, 0.8); */
+  background-color: seashell;
+  background-color: rgba(124, 124, 124, 0.75);
+  color: seashell
+
+}
+#phonebook > tbody > tr:nth-child(odd) {
+  background-color: rgba(124, 124, 124, 0.65);
+    
+    /* color:rgb(124, 124, 124) */
+    color: goldenrod
+}
+.tableElem{
+    height: 3vw;
+    padding-left: 2vw;
+    color: seashell;
 }

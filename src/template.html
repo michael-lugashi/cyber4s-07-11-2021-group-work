@@ -15,24 +15,42 @@
         <option value="addContact" class="options">Add:</option>
       </select>
       <div class="floatingLabel">
-          <input required type="text" placeholder="Name or ID" id="inputNameOrId" class="userInput" name="inputNameOrId" />
-          <label for="inputNameOrId" id="inputLabelName" class="userInputLabel">Name or ID</label>
+        <input
+          required
+          type="text"
+          placeholder="Name or ID"
+          id="inputNameOrId"
+          class="userInput"
+          name="inputNameOrId"
+        />
+        <label for="inputNameOrId" id="inputLabelName" class="userInputLabel"
+          >Name or ID</label
+        >
       </div>
       <div class="floatingLabel">
-        <input hidden type="number" placeholder="Phone Number" id="inputPhoneNumber" class="userInput" name="inputPhoneNumber" />
-        <label for="inputPhoneNumber" class="userInputLabel">Phone Number</label>
-    </div>
+        <input
+          hidden
+          type="tel"
+          placeholder="Phone Number"
+          id="inputPhoneNumber"
+          class="userInput"
+          name="inputPhoneNumber"
+        />
+        <label for="inputPhoneNumber" class="userInputLabel"
+          >Phone Number</label
+        >
+      </div>
       <button id="submit" type="submit" value="submit">Submit</button>
     </form>
-    <table class="" id="phonebook">
-      <thead>
-        <tr>
-          <th scope="col" class="borderCorner1">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col" class="borderCorner2">Number</th>
-        </tr>
-      </thead>
-      <tbody id="phonebookInfo"></tbody>
-    </table>
+      <table class="" id="phonebook">
+        <thead>
+          <tr>
+            <th scope="col">ID:</th>
+            <th scope="col">Name:</th>
+            <th scope="col" class="borderCorner2">Number:</th>
+          </tr>
+        </thead>
+        <tbody id="phonebookInfo"></tbody>
+      </table>
   </body>
 </html>
