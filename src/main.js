@@ -1,6 +1,7 @@
 'use strict';
 import style from './styles.css';
 const axios = require('axios');
+import swal from 'sweetalert';
 
 const baseUrl = 'http://localhost:3001/';
 
@@ -16,24 +17,24 @@ function formAction(event) {
   }
   if (userAction.value === 'deleteContact') {
     console.log('delete');
-    deleteContact()
+    deleteContact();
   }
   if (userAction.value === 'addContact') {
     console.log('add');
-    addContact()
+    addContact();
   }
 }
 
 function inputStyling() {
   if (userAction.value === 'addContact') {
     inputNameOrId.style['width'] = '25vw';
-    inputLabelName.textContent = 'Name'
-    inputNameOrId.placeholder = 'Name'
+    inputLabelName.textContent = 'Name';
+    inputNameOrId.placeholder = 'Name';
     inputPhoneNumber.hidden = false;
   } else {
     inputNameOrId.style['width'] = '50vw';
-    inputLabelName.textContent = 'Name or ID'
-    inputNameOrId.placeholder = 'Name or ID'
+    inputLabelName.textContent = 'Name or ID';
+    inputNameOrId.placeholder = 'Name or ID';
     inputPhoneNumber.hidden = true;
   }
 }
@@ -45,7 +46,7 @@ function getPhonebookData() {
 }
 
 function displayData(data) {
-    phonebookInfo.textContent = '';
+  phonebookInfo.textContent = '';
   for (const contact in data) {
     const tableRow = document.createElement('tr');
     tableRow.append(createTableElement(data[contact].id));
@@ -57,26 +58,32 @@ function displayData(data) {
 function createTableElement(text) {
   const tableElement = document.createElement('td');
   tableElement.textContent = text;
-  tableElement.classList.add('tableElem')
+  tableElement.classList.add('tableElem');
   return tableElement;
 }
-function deleteContact(){
-    axios.delete(`${baseUrl}api/persons/${inputNameOrId.value}`).then((response) => {
-        displayData(response.data);
-        deleteNotify()
-      });
-
+function deleteContact() {
+  axios
+    .delete(`${baseUrl}api/persons/${inputNameOrId.value}`)
+    .then((response) => {
+      displayData(response.data);
+      deleteNotify();
+    });
 }
-function deleteNotify(){
-    inputNameOrId.value = ''
-    inputPhoneNumber.value = ''
+function deleteNotify() {
+  inputNameOrId.value = '';
+  inputPhoneNumber.value = '';
 }
-function addContact(){
-    axios.post(`${baseUrl}api/persons`, {
-        name: inputNameOrId.value,
-        number: inputPhoneNumber.value
-    }).then((response) => {
-        displayData(response.data);
-        deleteNotify()
-      });
+function addContact() {
+  axios
+    .post(`${baseUrl}api/persons`, {
+      name: inputNameOrId.value,
+      number: inputPhoneNumber.value,
+    })
+    .then((response) => {
+      displayData(response.data);
+      deleteNotify();
+    })
+    .catch((err) => {
+      swal(`Error: ${err.response.status}`, `${err.response.data}`, 'error');
+    });
 }

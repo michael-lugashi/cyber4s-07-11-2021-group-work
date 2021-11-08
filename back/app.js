@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan')
-
+const parsePhoneNumber = require('libphonenumber-js')
 const app = express();
 const port = process.env.PORT || 3001;
 app.use(morgan('tiny'))
@@ -68,21 +68,37 @@ app.delete('/api/persons/:id', (req, res) => {
 
 app.post('/api/persons', morgan(':body'), (req, res) => {
   if (!req.body.name) {
-    res.status(400).json({ error: 'missing name' });
+    res.status(400).send('You need to send a name!');
     return;
   }
+  if (!req.body.number) {
+    res.status(400).send('You need to send a number!');
+    return;
+  }
+  const phoneNumberUs = parsePhoneNumber(req.body.number, 'US')
+  const phoneNumberIl = parsePhoneNumber(req.body.number, 'IL')
+  if (!phoneNumberUs.isValid() && !phoneNumberIl.isValid()) {
+    res.status(400).send('Not valid phone number!');
+    return
+  }
   for (const person of phonebook) {
-    if (person.name === req.body.name) {
-      res.status(400).json({ error: 'name already in phonebook' });
+    if (person.name.toLowerCase() === req.body.name.toLowerCase()) {
+      res.status(400).send('This name is already in the phonebook!');
       return;
     }
+    if (person.number === req.body.number) {
+        res.status(400).send('This number is already in the phonebook!');
+        return;
+      }
   }
 //   const person = {
 //     id: generateId(),
 //     name: req.body.name,
 //     number: req.body.number,
 //   };
-  req.body.id = generateId()
+  do {
+    req.body.id = generateId()
+  } while (phonebook.filter(contact => contact.id === req.body.id)[0]);
   phonebook.push(req.body);
 //   console.log(phonebook);
   res.status(201).json(phonebook);

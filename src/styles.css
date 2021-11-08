@@ -9,7 +9,7 @@ body {
   text-align: center;
   color: goldenrod;
   font-size: 5vw;
-  text-decoration: underline rgba(124, 124, 124, 0.75);
+  text-decoration: underline rgba(124, 124, 124, 0.71);
   margin-bottom: 0;
   margin-top: 4vw
 }
@@ -46,7 +46,8 @@ body {
   outline: none;
 }
 .options {
-  background-color: rgb(160,156,156);
+  /* background-color: rgb(160,156,156); */
+  background-color: rgb(168,156,156);
 }
 
 #inputNameOrId {
@@ -162,7 +163,7 @@ body {
 #phonebook > tbody > tr:nth-child(even) {
   /* background-color: rgba(218, 165, 32, 0.8); */
   background-color: seashell;
-  background-color: rgba(124, 124, 124, 0.75);
+  background-color: rgba(124, 124, 124, 0.71);
   color: seashell
 
 }
