@@ -83,8 +83,8 @@ input[type=number] {
 }
 .userInput:focus {
   outline: none;
-  height: 2.4vw !important;
-  padding-top: 0.9vw;
+  height: 1.9vw !important;
+  padding-top: 1.4vw;
 }
 .userInput::placeholder {
   color: rgb(124, 124, 124);
@@ -111,8 +111,8 @@ input[type=number] {
 }
 
 .userInput:not(:placeholder-shown) {
-  height: 2.4vw !important;
-  padding-top: 0.9vw;
+  height: 1.9vw !important;
+  padding-top: 1.4vw;
 }
 /* custom floating label end */
 #submit {
