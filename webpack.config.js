@@ -20,7 +20,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
       template: './src/template.html',
       title: 'index',

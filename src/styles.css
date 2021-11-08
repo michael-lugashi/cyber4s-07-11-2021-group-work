@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+
+body {
+  background-color: seashell;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+#title {
+  text-align: center;
+  color: goldenrod;
+  font-size: 5vw;
+  text-decoration: underline rgb(124, 124, 124);
+}
+#userActionForm {
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  font-size: 2vw;
+}
+#userAction,
+.userInput,
+#submit {
+  height: 3vw;
+  border: solid goldenrod;
+  font-size: inherit;
+  padding: 0.3vw;
+  border-width: 0.2vw;
+  /* the following ensures they're all using the same box-model for rendering */
+  -moz-box-sizing: content-box; /* or `border-box` */
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+#userAction {
+  width: 15vw;
+  text-align: center;
+  background-color: goldenrod;
+  color: seashell;
+  font-weight: bold;
+  border-radius: 1.5vw 0px 0px 1.5vw;
+}
+#userAction:focus {
+  outline: none;
+}
+.options {
+  background-color: rgb(124, 124, 124);
+}
+/* remove num scroll */
+/* Chrome, Safari, Edge, Opera */
+.userInput::-webkit-outer-spin-button,
+.userInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#inputNameOrId {
+    width: 50vw;
+}
+/* #inputPhoneNumber {
+    border-left: solid;
+} */
+
+/* custom floating label start */
+.floatingLabel {
+  position: relative;
+}
+.userInputLabel {
+  position: absolute;
+  visibility: hidden;
+  top: 0.7vw;
+  left: 0.7vw;
+  color: rgb(124, 124, 124);
+}
+.userInput {
+  width: 25vw;
+  border-width: 0.2vw 0 0.2vw 0;
+  padding-left: 0.7vw;
+  color: rgb(124, 124, 124);
+}
+.userInput:focus {
+  outline: none;
+  height: 2.4vw !important;
+  padding-top: 0.9vw;
+}
+.userInput::placeholder {
+  color: rgb(124, 124, 124);
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 2vw;
+}
+.userInput:focus::placeholder {
+  color: transparent;
+}
+.floatingLabel:focus-within .userInputLabel {
+  transition: 0.5s;
+  visibility: visible;
+  font-size: 1vw;
+  top: 0.3vw;
+  left: 0.7vw;
+  color: goldenrod;
+}
+.userInput:not(:placeholder-shown) + .userInputLabel {
+  visibility: visible;
+  font-size: 1vw;
+  top: 0.3vw;
+  left: 0.7vw;
+  color: goldenrod;
+}
+
+.userInput:not(:placeholder-shown) {
+  height: 2.4vw !important;
+  padding-top: 0.9vw;
+}
+/* custom floating label end */
+#submit {
+  width: 15vw;
+  background-color: goldenrod;
+  color: seashell;
+  font-weight: bold;
+  border-radius: 0px 1.5vw 1.5vw 0px;
+}
+#submit:hover {
+  background-color: rgb(124, 124, 124);
+}
+
+#phonebook {
+  margin: auto;
+  margin-top: 50px;
+  border: solid;
+  width: 80vw;
+}
