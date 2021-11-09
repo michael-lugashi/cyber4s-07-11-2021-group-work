@@ -12,12 +12,14 @@
   </head>
   <body>
     <h1 id="title"><%= htmlWebpackPlugin.options.title %></h1>
+
     <form id="userActionForm">
       <select id="userAction" required>
         <option value="findContact" class="options" selected>Find:</option>
         <option value="deleteContact" class="options">Delete:</option>
         <option value="addContact" class="options">Add:</option>
       </select>
+
       <div class="floatingLabel">
         <input
           required
@@ -31,7 +33,10 @@
           >Name or ID</label
         >
       </div>
+
       <div class="floatingLabel">
+        <!-- The tel and pattern attributes allow me to limit
+        what keys the user can enter that section of the form -->
         <input
           hidden
           type="tel"
@@ -45,8 +50,10 @@
           >Phone Number</label
         >
       </div>
+
       <button id="submit" type="submit" value="submit">Submit</button>
     </form>
+
     <table class="" id="phonebook">
       <thead>
         <tr>

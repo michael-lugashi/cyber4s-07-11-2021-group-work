@@ -1,21 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+/* WHOLE DOCUMENT */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap'); /* import font from google */
 
 body {
   background-color: seashell;
   font-family: 'Merriweather Sans', sans-serif;
   margin: 0;
 }
+
 *::selection {
-    background-color: gold;
+  background-color: gold;
 }
+
+/* TITLE */
 #title {
   text-align: center;
   color: goldenrod;
   font-size: 5vw;
   text-decoration: underline rgba(124, 124, 124, 0.71);
   margin-bottom: 0;
-  margin-top: 4vw
+  margin-top: 4vw;
 }
+
+/* FORM INPUT */
 #userActionForm {
   margin: auto;
   margin-top: 4vw;
@@ -24,6 +30,7 @@ body {
   width: 80vw;
   font-size: 2vw;
 }
+
 #userAction,
 .userInput,
 #submit {
@@ -37,6 +44,7 @@ body {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
+
 #userAction {
   width: 15vw;
   text-align: center;
@@ -48,17 +56,14 @@ body {
 #userAction:focus {
   outline: none;
 }
+
 .options {
-  /* background-color: rgb(160,156,156); */
-  background-color: rgb(168,156,156);
+  background-color: rgb(168, 156, 156);
 }
 
 #inputNameOrId {
   width: 50vw;
 }
-/* #inputPhoneNumber {
-    border-left: solid;
-} */
 
 /* custom floating label start */
 .floatingLabel {
@@ -79,7 +84,7 @@ body {
 }
 .userInput:focus {
   outline: none;
-  height: 1.9vw !important;
+  height: 1.9vw;
   padding-top: 1.4vw;
 }
 .userInput::placeholder {
@@ -105,12 +110,12 @@ body {
   left: 0.7vw;
   color: goldenrod;
 }
-
 .userInput:not(:placeholder-shown) {
-  height: 1.9vw !important;
+  height: 1.9vw;
   padding-top: 1.4vw;
 }
 /* custom floating label end */
+
 #submit {
   width: 15vw;
   background-color: goldenrod;
@@ -122,21 +127,14 @@ body {
   background-color: rgba(124, 124, 124, 0.71);
 }
 
-/* table styling */
-/* #tableBorder {
-  border: solid goldenrod;
-  border-radius: 1.5vw;
-  height:min-content;
-  margin: auto;
-  margin-top: 50px;
-  width: 80vw;
-} */
+/* TABLE */
 #phonebook {
   margin: auto;
   margin-top: 5vw;
   border-collapse: collapse;
   width: 80vw;
 }
+
 #phonebook > thead {
   background-color: goldenrod;
   font-size: 2vw;
@@ -144,13 +142,17 @@ body {
   margin: 0;
   text-align: left;
 }
+
 #phonebook > tbody {
   font-size: 1.5vw;
 }
-#phonebook > thead > tr > th{
-    height: 4vw;
- padding-left: 2vw;
+
+#phonebook > thead > tr > th {
+  height: 4vw;
+  padding-left: 2vw;
 }
+
+/* table curved border start */
 #phonebook > thead > tr > th:first-child {
   border-top-left-radius: 1.5vw;
 }
@@ -163,21 +165,18 @@ body {
 #phonebook > tbody > tr:last-child > td:last-child {
   border-bottom-right-radius: 1.5vw;
 }
-#phonebook > tbody > tr:nth-child(even) {
-  /* background-color: rgba(218, 165, 32, 0.8); */
-  background-color: seashell;
-  background-color: rgba(124, 124, 124, 0.71);
-  color: seashell
+/* table curved body end */
 
+#phonebook > tbody > tr:nth-child(even) {
+  background-color: rgba(124, 124, 124, 0.71);
 }
+
 #phonebook > tbody > tr:nth-child(odd) {
   background-color: rgba(124, 124, 124, 0.65);
-    
-    /* color:rgb(124, 124, 124) */
-    color: goldenrod
 }
-.tableElem{
-    height: 3vw;
-    padding-left: 2vw;
-    color: seashell;
+
+.tableElem {
+  height: 3vw;
+  padding-left: 2vw;
+  color: seashell;
 }
