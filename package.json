@@ -1,7 +1,7 @@
 {
   "name": "cyber4s-07-11-2021-group-work",
   "version": "1.0.0",
-  "description": "",
+  "description": "we will be working on this assigment https://fullstackopen.com/en/part3.",
   "main": "index.js",
   "scripts": {
     "start": "node back/app.js",
