@@ -34,6 +34,7 @@
     "express": "^4.17.1",
     "libphonenumber-js": "^1.9.42",
     "morgan": "^1.10.0",
+    "notyf": "^3.10.0",
     "sweetalert": "^2.1.2"
   }
 }

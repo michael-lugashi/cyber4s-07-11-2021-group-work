@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -43,15 +48,15 @@
       </div>
       <button id="submit" type="submit" value="submit">Submit</button>
     </form>
-      <table class="" id="phonebook">
-        <thead>
-          <tr>
-            <th scope="col">ID:</th>
-            <th scope="col">Name:</th>
-            <th scope="col" class="borderCorner2">Number:</th>
-          </tr>
-        </thead>
-        <tbody id="phonebookInfo"></tbody>
-      </table>
+    <table class="" id="phonebook">
+      <thead>
+        <tr>
+          <th scope="col">ID:</th>
+          <th scope="col">Name:</th>
+          <th scope="col" class="borderCorner2">Number:</th>
+        </tr>
+      </thead>
+      <tbody id="phonebookInfo"></tbody>
+    </table>
   </body>
 </html>

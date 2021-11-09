@@ -2,12 +2,12 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const morgan = require('morgan')
-const parsePhoneNumber = require('libphonenumber-js')
+const morgan = require('morgan');
+const parsePhoneNumber = require('libphonenumber-js');
 const app = express();
 const port = process.env.PORT || 3001;
-app.use(morgan('tiny'))
-morgan.token('body', (req, res) => JSON.stringify(req.body))
+app.use(morgan('tiny'));
+morgan.token('body', (req, res) => JSON.stringify(req.body));
 
 app.use(
   cors({
@@ -44,25 +44,41 @@ app.get('/api/persons', (req, res) => {
   res.json(phonebook);
 });
 
-app.get('/info', (req, res) => {
-  const infoString = `Phonebook has info for ${phonebook.length} people <br> ${new Date(Date.now())}`;
-  res.send(infoString);
-});
+// app.get('/info', (req, res) => {
+//   const infoString = `Phonebook has info for ${
+//     phonebook.length
+//   } people <br> ${new Date(Date.now())}`;
+//   res.send(infoString);
+// });
 
-app.get('/api/persons/:id', (req, res) => {
-  const id = Number(req.params.id);
-  const person = phonebook.find((person) => person.id === id);
+app.get('/api/persons/:idOrName', (req, res) => {
+  const idOrName = !isNaN(Number(req.params.idOrName))
+    ? Number(req.params.idOrName)
+    : req.params.idOrName.toLocaleLowerCase();
+  const person = phonebook.find(
+    (person) =>
+      person.id === idOrName || person.name.toLocaleLowerCase() === idOrName
+  );
   if (person) {
     res.json(person);
   } else {
-    res.status(404).end();
+    res.status(404).send('Contact Does not exist!');
   }
 });
 
-app.delete('/api/persons/:id', (req, res) => {
-  const id = Number(req.params.id);
-  phonebook = phonebook.filter((note) => note.id !== id);
-
+app.delete('/api/persons/:idOrName', (req, res) => {
+  const idOrName = !isNaN(Number(req.params.idOrName))
+    ? Number(req.params.idOrName)
+    : req.params.idOrName.toLocaleLowerCase();
+  const orginPBLength = phonebook.length;
+  phonebook = phonebook.filter(
+    (person) =>
+      person.id !== idOrName && person.name.toLocaleLowerCase() !== idOrName
+  );
+  if (phonebook.length === orginPBLength) {
+    res.status(400).send('Contact does not exist!');
+    return;
+  }
   res.status(202).json(phonebook);
 });
 
@@ -75,11 +91,11 @@ app.post('/api/persons', morgan(':body'), (req, res) => {
     res.status(400).send('You need to send a number!');
     return;
   }
-  const phoneNumberUs = parsePhoneNumber(req.body.number, 'US')
-  const phoneNumberIl = parsePhoneNumber(req.body.number, 'IL')
+  const phoneNumberUs = parsePhoneNumber(req.body.number, 'US');
+  const phoneNumberIl = parsePhoneNumber(req.body.number, 'IL');
   if (!phoneNumberUs.isValid() && !phoneNumberIl.isValid()) {
     res.status(400).send('Not valid phone number!');
-    return
+    return;
   }
   for (const person of phonebook) {
     if (person.name.toLowerCase() === req.body.name.toLowerCase()) {
@@ -87,20 +103,20 @@ app.post('/api/persons', morgan(':body'), (req, res) => {
       return;
     }
     if (person.number === req.body.number) {
-        res.status(400).send('This number is already in the phonebook!');
-        return;
-      }
+      res.status(400).send('This number is already in the phonebook!');
+      return;
+    }
   }
-//   const person = {
-//     id: generateId(),
-//     name: req.body.name,
-//     number: req.body.number,
-//   };
+  //   const person = {
+  //     id: generateId(),
+  //     name: req.body.name,
+  //     number: req.body.number,
+  //   };
   do {
-    req.body.id = generateId()
-  } while (phonebook.filter(contact => contact.id === req.body.id)[0]);
+    req.body.id = generateId();
+  } while (phonebook.filter((contact) => contact.id === req.body.id)[0]);
   phonebook.push(req.body);
-//   console.log(phonebook);
+  //   console.log(phonebook);
   res.status(201).json(phonebook);
 });
 

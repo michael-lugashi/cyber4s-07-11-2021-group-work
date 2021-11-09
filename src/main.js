@@ -1,7 +1,8 @@
 'use strict';
 import style from './styles.css';
-const axios = require('axios');
+import axios from 'axios';
 import swal from 'sweetalert';
+import { Notyf } from 'notyf';
 
 const baseUrl = 'http://localhost:3001/';
 
@@ -14,6 +15,7 @@ function formAction(event) {
   console.log(event);
   if (userAction.value === 'findContact') {
     console.log('find');
+    findContact()
   }
   if (userAction.value === 'deleteContact') {
     console.log('delete');
@@ -66,10 +68,14 @@ function deleteContact() {
     .delete(`${baseUrl}api/persons/${inputNameOrId.value}`)
     .then((response) => {
       displayData(response.data);
-      deleteNotify();
-    });
+      notify('Contact succesfully deleted.');
+    }).catch(err => {
+        swal(`Error: ${err.response.status}`, `${err.response.data}`, 'error');
+    })
 }
-function deleteNotify() {
+function notify(text) {
+    const notyf = new Notyf()
+    notyf.success(text)
   inputNameOrId.value = '';
   inputPhoneNumber.value = '';
 }
@@ -81,9 +87,17 @@ function addContact() {
     })
     .then((response) => {
       displayData(response.data);
-      deleteNotify();
+      notify('Contact succesfully added!');
     })
     .catch((err) => {
       swal(`Error: ${err.response.status}`, `${err.response.data}`, 'error');
     });
+    
+}
+function findContact(){
+    axios.get(`${baseUrl}api/persons/${inputNameOrId.value}`).then((res) => {
+        swal(`Contact:`, `Name: ${res.data.name}\nNumber: ${res.data.number}`)
+      }).catch(err => {
+        swal(`Error: ${err.response.status}`, `${err.response.data}`, 'error');
+      })
 }
