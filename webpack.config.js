@@ -23,7 +23,7 @@ module.exports = {
     // new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
       template: './src/template.html',
-      title: 'index',
+      title: 'Phonebook',
       filename: 'index.html'
   })
 ],

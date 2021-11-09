@@ -8,11 +8,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
     />
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1 id="title">Phonebook</h1>
+    <h1 id="title"><%= htmlWebpackPlugin.options.title %></h1>
     <form id="userActionForm">
       <select id="userAction" required>
         <option value="findContact" class="options" selected>Find:</option>
