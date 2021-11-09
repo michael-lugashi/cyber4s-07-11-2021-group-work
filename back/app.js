@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
 const parsePhoneNumber = require('libphonenumber-js');
+const { dirname } = require('path');
 const app = express();
 const port = process.env.PORT || 3001;
 app.use(morgan('tiny'));
@@ -16,6 +17,12 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.use('/', express.static('./dist'));
+app.get('/', function (req, res) {
+  // serve main path as static file
+  res.sendFile(path.resolve(__dirname, './dist/index.html'));
+});
 
 let phonebook = [
   {
