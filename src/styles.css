@@ -61,7 +61,7 @@ body {
   background-color: rgb(168, 156, 156);
 }
 
-#inputNameOrId {
+#inputName {
   width: 50vw;
 }
 
@@ -149,7 +149,7 @@ body {
 
 #phonebook > thead > tr > th {
   height: 4vw;
-  padding-left: 2vw;
+  padding-left: 3vw;
 }
 
 /* table curved border start */
@@ -177,6 +177,6 @@ body {
 
 .tableElem {
   height: 3vw;
-  padding-left: 2vw;
+  padding-left: 3vw;
   color: seashell;
 }

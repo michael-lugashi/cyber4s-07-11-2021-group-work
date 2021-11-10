@@ -9,15 +9,11 @@ export function inputStyling() {
 }
 
 function withPhoneNumberInput() {
-  inputNameOrId.style['width'] = '25vw';
-  inputLabelName.textContent = 'Name';
-  inputNameOrId.placeholder = 'Name';
+  inputName.style['width'] = '25vw';
   inputPhoneNumber.hidden = false;
 }
 
 function withoutPhoneNumberInput() {
-  inputNameOrId.style['width'] = '50vw';
-  inputLabelName.textContent = 'Name or ID';
-  inputNameOrId.placeholder = 'Name or ID';
+  inputName.style['width'] = '50vw';
   inputPhoneNumber.hidden = true;
 }

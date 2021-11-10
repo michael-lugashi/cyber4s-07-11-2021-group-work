@@ -5,7 +5,6 @@ export function displayData(data) {
   phonebookInfo.textContent = '';
   for (const contact in data) {
     const tableRow = document.createElement('tr');
-    tableRow.append(createTableElement(data[contact].id));
     tableRow.append(createTableElement(data[contact].name));
     tableRow.append(createTableElement(data[contact].number));
     phonebookInfo.append(tableRow);
@@ -22,6 +21,6 @@ function createTableElement(text) {
 export function notify(text) {
   const notyf = new Notyf();
   notyf.success(text);
-  inputNameOrId.value = '';
+  inputName.value = '';
   inputPhoneNumber.value = '';
 }
