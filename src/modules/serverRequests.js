@@ -2,7 +2,7 @@
 import axios from 'axios';
 import swal from 'sweetalert';
 import { displayData, notify } from './displayData';
-const baseUrl = 'http://localhost:3001/';
+const baseUrl = 'https://phonebook-online-app.herokuapp.com/';
 
 export function getPhonebookData() {
   axios.get(`${baseUrl}api/persons`).then((response) => {
