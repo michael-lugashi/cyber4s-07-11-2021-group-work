@@ -3,22 +3,19 @@ const express = require('express');
 const router = express.Router();
 const Contact = require('../model/Contacts');
 
-router.delete('/:name', async (req, res) => {
-
-  const phonebook = await Contact.find();
-  const contactIndex = phonebook.findIndex(
-    (contact) => contact.name.toLowerCase() === req.params.name.toLowerCase()
-  );
-
-  if (contactIndex + 1) {
-    phonebook.splice(contactIndex, 1);
-    res.status(202).send(phonebook);
-    // so user does not have to wait for it to be removed from the database
-    // you don't need to catch it because it has to work since the contact being deleted was taken right out of the database
-    Contact.findOneAndRemove(phonebook[contactIndex]).exec();
-    return;
-  }
-  res.status(400).send('Contact does not exist!');
+router.delete('/:name', (req, res) => {
+  Contact.findOneAndRemove({ name: { $regex: `${req.params.name}\\b`, $options: 'i' } })
+    .then(async (delCount) => {
+      if (delCount) {
+        res.status(202).json(await Contact.find().sort({'name': 1}));
+        return;
+      }
+      res.status(400).send('Contact does not exist!');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send('Contact could not be deleted!');
+    });
 });
 
 module.exports = router;

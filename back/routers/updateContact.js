@@ -6,25 +6,17 @@ const morgan = require('morgan');
 const validateInput = require('../middleware/validateInput');
 morgan.token('body', (req, res) => JSON.stringify(req.body));
 
-router.post('', morgan(':body'), validateInput, (req, res) => {
-  const phonebook = req.body.phonebook;
-
-  const contact = new Contact({
-    name: req.body.name,
-    number: req.body.number,
-  });
-
-  contact
-    .save()
-    .then((newContact) => {
-      phonebook.push(newContact);
-      res
-        .status(201)
-        .json(
-          phonebook.sort((contactA, contactB) =>
-            contactA.name.localeCompare(contactB.name)
-          )
-        );
+router.put('', morgan(':body'), validateInput, (req, res) => {
+  Contact.findOneAndUpdate(
+    { name: { $regex: `${req.body.name}\\b`, $options: 'i' } },
+    { number: req.body.number }
+  )
+    .then(async (updatedContact) => {
+      if (updatedContact) {
+        res.status(200).json(await Contact.find().sort({ name: 1 }));
+        return;
+      }
+      res.status(400).send('Contact does not exist!');
     })
     .catch((err) => {
       console.log(err);

@@ -11,6 +11,7 @@ const getPhonebook = require('./routers/getPhonebook')
 const findContact = require('./routers/findContact');
 const deleteContact = require('./routers/deleteContact');
 const addContact = require('./routers/addContact')
+const updateContact = require('./routers/updateContact')
  
 app.use(morgan('tiny'));
 app.use(cors());
@@ -39,3 +40,4 @@ app.use('/api/persons', getPhonebook)
 app.use('/api/persons', findContact)
 app.use('/api/persons', deleteContact)
 app.use('/api/persons', addContact)
+app.use('/api/persons', updateContact)

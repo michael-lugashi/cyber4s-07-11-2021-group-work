@@ -29,6 +29,7 @@ body {
   justify-content: center;
   width: 80vw;
   font-size: 2vw;
+  max-width: 1500px;
 }
 
 #userAction,
@@ -133,6 +134,8 @@ body {
   margin-top: 5vw;
   border-collapse: collapse;
   width: 80vw;
+  max-width: 1500px;
+  margin-bottom: 30px;
 }
 
 #phonebook > thead {

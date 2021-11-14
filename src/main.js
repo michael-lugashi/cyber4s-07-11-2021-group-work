@@ -5,6 +5,7 @@ import {
   findContact,
   deleteContact,
   addContact,
+  updateContact
 } from './modules/serverRequests';
 import { inputStyling } from './modules/inputStyling';
 
@@ -22,5 +23,8 @@ function formAction(event) {
   }
   if (userAction.value === 'addContact') {
     addContact();
+  }
+  if (userAction.value === 'updateContact') {
+    updateContact();
   }
 }

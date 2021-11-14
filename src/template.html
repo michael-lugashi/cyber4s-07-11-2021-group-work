@@ -18,6 +18,7 @@
         <option value="findContact" class="options" selected>Find:</option>
         <option value="deleteContact" class="options">Delete:</option>
         <option value="addContact" class="options">Add:</option>
+        <option value="updateContact" class="options">Update:</option>
       </select>
 
       <div class="floatingLabel">
@@ -34,11 +35,10 @@
         >
       </div>
 
-      <div class="floatingLabel">
+      <div class="floatingLabel" hidden>
         <!-- The tel and pattern attributes allow me to limit
         what keys the user can enter that section of the form -->
         <input
-          hidden
           type="tel"
           pattern="[0-9-+ ]+"
           placeholder="Phone Number"

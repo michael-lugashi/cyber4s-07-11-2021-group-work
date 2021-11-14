@@ -1,7 +1,7 @@
 'use strict';
 
 export function inputStyling() {
-  if (userAction.value === 'addContact') {
+  if (userAction.value === 'addContact' || userAction.value === 'updateContact') {
     withPhoneNumberInput();
   } else {
     withoutPhoneNumberInput();
@@ -10,10 +10,10 @@ export function inputStyling() {
 
 function withPhoneNumberInput() {
   inputName.style['width'] = '25vw';
-  inputPhoneNumber.hidden = false;
+  inputPhoneNumber.closest('div').hidden = false;
 }
 
 function withoutPhoneNumberInput() {
   inputName.style['width'] = '50vw';
-  inputPhoneNumber.hidden = true;
+  inputPhoneNumber.closest('div').hidden = true;
 }
